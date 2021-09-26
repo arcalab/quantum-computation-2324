@@ -7,7 +7,7 @@
 
 	<title>Quantum Computation 2021/22</title>		
 
-	<meta name="description" content="Quantum Computing 20/21">
+	<meta name="description" content="Quantum Computing 21/22">
 	<meta name="keywords" content="Quantum computing, semantics, logic">
 	<meta name="author" content="Luís Soares Barbosa" >
 	
@@ -113,9 +113,10 @@ On successful completion  of the course students should be able
 <ul>
 <li> <strong> Computability and  complexity </strong>
 <ul>
-  <li> Mathematical backgound: sets, orders, groups, automata. 
+  <li> Mathematical backgound: sets, orders, groups. 
   <li> Turing machines and computability. 
   <li> Computational complexity. Agorithms and complexity classes. 
+  <li> Complexity in quantum computation.
 </ul> 
 <li> <strong> Quantum computation and algorithms</strong>:
 <ul>
@@ -124,7 +125,6 @@ On successful completion  of the course students should be able
   <li> Algorithms based on phase amplification.
   <li> Algorithms based on the quantum Fourier transform.
   <li> Case studies in quantum algorithmics.
-  <li> Quantum complexity.
 </ul> 
 <li>
     <strong> Quantum  programming</strong>
@@ -132,20 +132,17 @@ On successful completion  of the course students should be able
         <li> Quantum programming in a functional setting.
         <li> Quantum programming in Qiskit
     </ul>
-
+</ul>
 
 
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="material"></div>
-    <h2>Summaries (2020-21)</h2>
+    <h2>Summaries (2021-20)</h2>
 
     <h5> T Lectures</h5>
 
 
-    <strong> <font color="red">New Virtual classroom</font>: </strong>Join
-    <a href="https://videoconf-colibri.zoom.us/j/88089687735?pwd=ZEFsL3JVUnpUMmNENUN6WHJ3Q09TZz09"> here every week </a>
-    </p>
     <ul>
         <!--
         <li class="faded"><a href="slides/QL-2-Logic.pdf">
@@ -153,206 +150,25 @@ On successful completion  of the course students should be able
          -->
 
         <li>
-            <strong>Feb 19:</strong>
-            Introduction to Quantum Computation and the course dynamics <a href="CQ-0.pdf">(slides)</a>.
+            <strong>Oct 9 (08:00 - 10:00):</strong>
+            Introduction to Quantum Computation and the course dynamics <a href="./NotesSlides/CQ-0.pdf">(slides)</a>.
             <P>
-                <strong> <font color="red">Link for the first lecture (only)</font>: </strong>Join
-                <a href="https://videoconf-colibri.zoom.us/j/83408434903?pwd=YmdDcUtLUk53K1lTTER6QWVzdGk5QT09"> here </a>
-
-
-
-        </li>
-        <li>
-            <strong>Feb 23:</strong>
-            <P> Background: Discrete mathematical structures -- sets and cardinality <a href="QC-LN-Sets.pdf">(lecture notes)</a>.
-            <P>
-                <!--
-                 Conclusion of the previous lecture (orders, groups and automata - non deterministic, probabilistic and quantum) <P>
-                -->
-        </li>
-        <li>
-            <strong>Mar 2:</strong>
-            <P> Background: Discrete mathematical structures -- groups <a href="QC-LN-Groups.pdf">(lecture notes)</a>.   <P>
-                <!--
-                 Conclusion of the previous lecture (orders, groups and automata - non deterministic, probabilistic and quantum) <P>
-                -->
-        </li>
-        <li>
-            <strong>Mar 16:</strong>
-            <P> Introduction to computability. Turing machines and universal Turing machines. Recursive functions <a href="QC-LN-Computability.pdf">(lecture notes)</a>.   <P>
-                <!--
-                 Conclusion of the previous lecture (orders, groups and automata - non deterministic, probabilistic and quantum) <P>
-                -->
-        </li>
-        <li>
-            <strong>Mar 23:</strong>
-            <P> Introduction to computational complexity. Basic notions and tools. Complexity classes  <a href="QC-LN-Complexity.pdf">(lecture notes)</a>.   <P>
-        </li>
-        <li>
-            <strong>Abr 9:</strong>
-            Introduction to quantum algorithms. Phase kick-back. The Deutsch-Joza algorithm. <a href="CQ2021-1.pdf">(slides)</a>.
-            <P>
-                <strong> <font color="red">Link for this lecture (only)</font>: </strong>Join
-                <a href="https://videoconf-colibri.zoom.us/j/82371071491?pwd=Vy9uaWFUQ2VKVWtuNzdaVGg2L2xEQT09"> here </a>
-        </li>
-        <li>
-            <strong>Abr 13:</strong>
-            <P> Amplitude amplification as an algorithimic technique. Search problems and Grover's algorithm. <a href="CQ2021-2.pdf">(slides)</a>.   <P>
-        </li>
-        <li>
-            <strong>Abr 23:</strong>
-            <P>  Further quantum algorithms: Bernstein-Vazirani and Simon. Variants. <a href="CQ2021-3.pdf">(slides)</a>.   <P>
-        </li>
-        <li>
-            <strong>May 7:</strong>
-            <P>  Case study: Quantum Bayesian decision making <a href="QBNets-MichaelOliveira.pdf">(slides)</a> <a href="https://link.springer.com/article/10.1007/s10699-021-09781-6">(paper)</a>.
-              The quantum phase estimation problem <a href="CQ2021-4.pdf">(slides)</a>.   <P>
-        </li>
-        <li>
-            <strong>May 7 (14.30):</strong>
-            <P>  Quantum Fourier transform. The eigenvalue estimation problem  <a href="CQ2021-5.pdf">(slides; first section)</a> <P>
-              <strong> <font color="red">Link for this lecture (only)</font>: </strong>Join
-                <a href="https://videoconf-colibri.zoom.us/j/83889364181?pwd=RTdpZEpFRVF3aGMwczFZSTF2RkxQUT09"> here </a>
-        </li>
-        <li>
-            <strong>May 14:</strong>
-            <P>  Case study: Quantum reinforcement learning <a href="QRL-AndreSequeira2021.pdf">(slides)</a>.
-              Resolution of the QFT exercise <a href="CQ-P3-2021s.pdf">(note)</a>.   <P>
-        </li>
-        <li>
-            <strong>May 21:</strong>
-            <P>  
-              The algorithm of Shor. Reduction to order-finding. <a href="CQ2021-5.pdf">(slides)</a> <P>
-              The hidden subgroup problem and its instances: finding the period of a periodic function; the discrete logarithm problem. <a href="CQ2021-6.pdf">(slides)</a><P>
-              Case study: Quantum walks. <a href="QuantumWalksJaimeSantos.ipynb">(notebook)</a>    <P>
         </li>
     </ul>
-    <!--
-
-    <li>
-      <strong>Feb 20:</strong>
-      Computability. Turing machines and the halting problem. Primitive recursive and recursive functions.
-      <a href="QC-LN-2.pdf">(lecture notes)</a>.<P>
-    </li>
-    <li>
-      <strong>Feb 27:</strong>
-     Computational complexity: basic definitions and examples. Complexity classes. What has quantum  to say.<P>
-        <a href="QC-LN-3.pdf">(lecture notes)</a>.<P>
-    </li>
-    <li>
-      <strong>Mar 5:</strong>
-      <em> CANCELLED: Lecturer in UM mission </em> <P>
-    </li>
-    <li>
-      <strong>Mar 12:</strong>
-      <em> CANCELLED: Covid-19 preventive determination  </em>  <P>
-    </li>
-    <li>
-      <strong>Mar 19:</strong>
-       <font color="red">(Non presencial lecture)</font>   The quantum computational model. Introduction to quantum algorithms. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-1.pdf">(slides)</a>  <br>
-      <strong> <font color="red">Live session 1</font>: </strong>Join
-      <a href="https://eu.bbcollab.com/guest/b94225d20c214a1481338aa6c1e27830"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>Mar 26:</strong>
-      <em> CANCELLED  </em>   <P>
-    </li>
-    <li>
-      <strong>Apr 2:</strong>
-      <font color="red">(Non presencial lecture)</font>   Phase amplification. Quantum search through the Grover algorithm.  <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-2.pdf">(slides)</a>  <br>
-        <strong>Problem 1:</strong>  <a href="CQ-P1.pdf">(until 9 April)</a>  <br>
-      <strong> <font color="red">Live session 2</font>: </strong>Join
-      <a href="https://videoconf-colibri.zoom.us"> here! </a> (check the meeting id at your academic mailbox)
-      </p>
-    </li>
-    <li>
-      <strong>Apr 16:</strong>
-       <font color="red">(Non presencial lecture)</font>   Revisiting `quantum parallelism'. The Bernstein-Vazirani algorithm. Introduction to hidden group problems through the Simon's algorithm. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-3.pdf">(slides)</a>  <br>
-      <strong> <font color="red">Live session 3</font>: </strong>Join
-      <a href="https://eu.bbcollab.com/guest/19c2963e1a7c413ca43ccd7256bd63e3"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>Apr 23:</strong>
-       <font color="red">(Non presencial lecture)</font>   The quantum Fourier transform. Application to the phase estimation problem. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-4.pdf">(slides)</a>  <br>
-      <strong> <font color="red">Live session 4</font>: </strong>Join
-      <a href="https://eu.bbcollab.com/guest/24f555caab074382a8be5408a8e6c9f1"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>Apr 30:</strong>
-       <em> CANCELLED  </em>  <P>
-      <p class="small">
-        <strong>Problem 2:</strong>  <a href="CQ-P2.pdf">(until 15 May)</a> <br>
-      </p>
-    </li>
-    <li>
-      <strong>May 7:</strong>
-        <font color="red">(Non presencial lecture)</font>   Invited lecture by <a href="https://inl.int/inl-people/ernesto-galvao/">Ernesto Galvão</a> on measurement-based quantum computation. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="MBQC-ErnestoGalvao.pdf">(slides)</a>
-        <a href="http://www.di.uminho.pt/~lsb/AulaMBQC/ErnestoGalvaoMay2020.mp4">(video)</a>
-        <a href="#notas">(commented links)</a>   <br>
-      <strong> <font color="red">Live session 5</font>: </strong>Join colibri-zoom
-      <a href="https://videoconf-colibri.zoom.us/j/97685495469?pwd=SGo1VUZVaDZpdUNKMW15cXQ2VUNaZz09"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>May 14:</strong>
-       <font color="red">(Non presencial lecture)</font>   The eigenvalue estimation problem. The order-finding problem. Shor's algortithm. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-5.pdf">(slides)</a>  <a href="https://arxiv.org/abs/quant-ph/9508027">(P. Shor original paper)</a><br>
-      <strong> <font color="red">Live session 6</font>: </strong>Join
-      <a href="https://eu.bbcollab.com/guest/b1e2a187645b44d28049d81a49c74840"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>May 27:</strong>
-       <font color="red">(Non presencial lecture)</font>   The period-estimation algorithm and variants. An exercise on algorithmic design. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-6.pdf">(slides)</a> <br>
-        <strong>Problem 3:</strong>  <a href="CQ-P3.pdf">(until 27 June)</a>  <br>
-        <strong>Problem 4:</strong>  <a href="CQ-P4.pdf">(until 27 June)</a>  <br>
-      <strong> <font color="red">Live session 7</font>: </strong>Join
-      <a href="https://eu.bbcollab.com/guest/aebffbd6aff84f869eecb1cce4e4224d"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>May 28:</strong>
-      <font color="red">(Non presencial lecture)</font>  Quantum simulation in biology and chemestry: quantum evolution; computation of the fundamental state with the variantional method. Complexity classes for quantum algorithms. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  Invited lecture by <a href="https://haslab.uminho.pt/ctavares/">Carlos Tavares</a> on quantum simulation    <a href="QuantumSimulation-CTavares.pdf">(slides)</a> <br>
-      <strong> <font color="red">Live session 8</font>: </strong>Join
-      <a href="https://videoconf-colibri.zoom.us/j/91787129659?pwd=Z3JsSFJxRFlwZDd6T1JBa3lUUFJGZz09"> here! (zoom)</a>
-      </p>
-    </li>
-    <li>
-      <strong>Jun 4:</strong>
-       <font color="red">(Non presencial lecture)</font>   An algorithm for computing the discrete logarithm. The hidden group problem: formulation, instances, algorithm. <P>
-      <p class="small">
-        <strong>Lecture support:</strong>  <a href="CQ-7.pdf">(slides)</a> <br>
-      <strong> <font color="red">Live session 9</font>: </strong>Join
-      <a href="https://eu.bbcollab.com/guest/7ac367161796450689e9cdcc9b0f1876"> here! </a>
-      </p>
-    </li>
-    <li>
-      <strong>Jun 18:</strong>
-     Discussion experimental assignment <P>
-    </li></ul>
-     -->
+        
     <h5> TP Lectures </h5>
     <ul>
-        <li>
-            <strong>Feb 26:</strong>
+    	<li>
+            <strong>Oct 9 (10:00 - 12:00):</strong>
+            <P>
+                ...
+            </P>
+        </li>
+    </ul>
+    </ul>
+         <!--
+         <li>
+            <strong>Oct 9 (10:00 - 12:00):</strong>
             <P>
                 Introduction to the practical component of the course. <br />
                 Problem Set 1 - Haskell -- <a href="practical/210226/01emief2021.pdf">(exercises)</a> and <a href="practical/210226/class01.hs">(support material)</a>. <br />
@@ -470,74 +286,6 @@ On successful completion  of the course students should be able
           </p>
         </li>
       </ul>
-    <!--
-
-    
-    <li>
-      <strong>Feb 13:</strong>
-      Problem Set 1 - Algebra of quantum operations. <a href="practical/CQ20_ProblemSet2.pdf">(exercises)</a> <P>
-    </li>
-    <li>
-      <strong>Feb 28:</strong>
-      Conclusion of Problem Set 3. <P>
-    </li>
-    <li>
-      <strong>Mar 6:</strong>
-      Introduction to Qiskit and its components.
-      <P> Deutsch-Josza Algorithm. <a href="practical/quantum_week_1.zip">(Jupyter notebook)</a> <P>
-    </li>
-    <li>
-      <strong>Mar 13:</strong>
-      <em> CANCELLED: Covid-19 preventive determination  </em> <P>
-    </li>
-    <li>
-      <strong>Mar 20:</strong>
-       <font color="red">(Non presencial lecture)</font>   Working with the IBMQ backends.
-       <P> Quantum Teleportation protocol. <a href="practical/quantum_week_2.zip">(Jupyter notebook)</a><P>
-    </li>
-    <li>
-      <strong>Mar 27:</strong>
-       <font color="red">(Non presencial lecture)</font> Grover's search algorithm - first steps.
-       <P> Solving a 3-SAT problem with Grover's algorithm. <a href="practical/quantum_week_3.zip">(Jupyter notebook)</a><P>
-       <P>
-    </li>
-    <li>
-      <strong>Apr 3:</strong>
-      <font color="red">(Non presencial lecture)</font> Solving a 3-SAT problem with Grover's algorithm (continued).
-      <P> C(n)NOT decomposition. <a href="practical/quantum_week_4.zip">(Jupyter notebook)</a><P>
-      <P>
-    <li>
-      <strong>Apr 17:</strong>
-    <font color="red">(Non presencial lecture)</font> Quantum state tomography.
-      <P> Simulating measurement noise. <a href="practical/quantum_week_5.zip">(Jupyter notebook)</a><P>
-      <P>
-    <li>
-      <strong>Apr 24:</strong>
-    <font color="red">(Non presencial lecture)</font> Quantum Fourier transform.
-      <P> Period Finding. <a href="practical/quantum_week_6.zip">(Jupyter notebook)</a><P>
-      <P>
-    <li>
-      <strong>May 8:</strong>
-    <font color="red">(Non presencial lecture)</font> Quantum phase estimation. <a href="practical/quantum_week_7.zip">(Jupyter notebook)</a><P>
-      <P>
-    <li>
-      <strong>May 15:</strong>
-    <font color="red">(Non presencial lecture)</font> Quantum counting. <a href="practical/quantum_week_8.zip">(Jupyter notebook)</a><P>
-      <P>
-    <li>
-      <strong>May 22:</strong>
-    <font color="red">(Non presencial lecture)</font> Variational Quantum Eigensolver with Qiskit Aqua.
-     <P> Quantum Approximate Optimization Algorithm. <a href="practical/quantum_week_9.zip">(Jupyter notebook)</a><P>
-      <P>
-    <li>
-      <strong>May 29:</strong>
-      Discussing ongoing experimental assignments. <P>
-      <li>
-      <strong>Jun 19:</strong>
-     Discussion of delivered experimental assignments. <P>
-    </li>
-    </ul>
-    </ul>
     -->
     <!--~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="biblio"></div>
@@ -574,7 +322,7 @@ On successful completion  of the course students should be able
         <li>
             W. Scherer. <strong>Mathematics of Quantum Computing</strong>. Springer, 2019.
     </ul>
-
+<!--
 <h5> Some extra references on quantum algorithms
   </font><font color="red">    <strong>NEW</strong></font></h5>
 
@@ -594,7 +342,7 @@ On successful completion  of the course students should be able
 
 <li> <font color="red">Quantum programming languages:</font> <a href="https://www.mathstat.dal.ca/~selinger/papers/papers/qpl.pdf">here</a>; <a href="http://www.cs.nott.ac.uk/~psztxa/publ/qml.pdf">there</a>, and <a href="https://www.iitis.pl/~miszczak/files/papers/miszczak11models.pdf">there</a>.
 </ul>
-
+-->
 
 
 
@@ -673,7 +421,7 @@ On successful completion  of the course students should be able
     </li>
     </ul>
     
-    <!--~~~~~~~~~~~~~~~~~~~~~~~-->
+   -->
     <div id="funcionamento"></div>
     <h2>Pragmatics</h2>
 
@@ -682,22 +430,19 @@ On successful completion  of the course students should be able
     <ul>
         <li><a href="http://www.di.uminho.pt/~lsb">Luís Soares Barbosa</a>
         <li>
-            <a href="https://www.inesctec.pt/en/people/ana-isabel-neri#intro">Ana Neri</a>
+            <a href="https://alfa.di.uminho.pt/~nevrenato/">Renato Neves</a>
         </li>
     </ul>
 
     <h5><a name="Avaliação"></a> Assessment </h5>
 
     <ul>
+            Training assignment on programming quantum algorithms (60%): to be discussed on <strong>15 January 2022</strong>
+            (with intermediate ckeckpoints and deliverables to be fixed in the TP lectures)
         <li>
-           <strong> <font color="red">FINAL MARKS available</font></strong> <a href="CQ-Classf-2020-21.pdf">here</a>
-        <li>
-            Training assignment (60%): to be discussed on <strong>25 May</strong>
-            (with intermediate ckeckpoints)
-        <li>
-            Individual assynchronous  test (40%): 2 exercises proposed along the T lectures
+            Individual assynchronous  test (40%): to be divided into 2 or 3 exercises proposed along the T lectures
             <ul>
-            <li>
+             <!--<li>
             <strong>Problem 1 (16-30 March)</strong>
             <a href="CQ-P1-2021.pdf">(pdf)</a> 
             </li>
@@ -708,8 +453,6 @@ On successful completion  of the course students should be able
             <strong>Problem Extra </strong>
             <a href="CQ-P3-2021.pdf">(pdf)</a> 
             </li>
-                <!--
-                 Conclusion of the previous lecture (orders, groups and automata - non deterministic, probabilistic and quantum) <P>
                 -->
         </ul>
     </ul><!-- <a href="QC-Teste1819.pdf">Results!</a>
@@ -723,9 +466,9 @@ On successful completion  of the course students should be able
 
     <ul>
         <li> Appointments - Luis: Wed, 18:00-20:00 and Fri, 18:00-20:00 (please send an email the day before)
-        <li> Appointments - Ana:  Wed, 17:00-19:00 (please send an email the day before)
-        <li> Email: lsb at di dot uminho dot pt (Luis) and aicneri at gmail dot com (Ana)
-        <li> Last update: 2021.06.29
+        <li> Appointments - Renato:  ... (please send an email the day before)
+        <li> Email: lsb at di dot uminho dot pt (Luis) and nevrenato at gmail dot com (Renato)
+        <li> Last update: 2021.09.26
     </ul>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -736,7 +479,7 @@ On successful completion  of the course students should be able
 
 <div class="panel-footer" id="wrapper-footer">
 <div id="footer">
-2021.06.29
+2021.09.26
 </div>
 </div>
 

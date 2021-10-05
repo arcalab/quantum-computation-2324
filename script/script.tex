@@ -1,0 +1,499 @@
+\documentclass[a4paper, 11pt]{article}
+
+%% packages
+\usepackage{fullpage} % changes the margin
+\usepackage{hyperref} % Links
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{braket}
+%%
+
+%% macros
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\vecs}{\mathcal{V}}
+\newcommand{\id}{\mathrm{id}}
+%% environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{examples}{Example}
+\newtheorem{exercises}{Exercises}
+\newtheorem{exercise}{Exercise}
+\newtheorem{postulate}{Postulate}
+%% config
+\date{}
+\linespread{1.15}
+%%
+
+\begin{document}
+
+\title{Quantum Computing @ MEF \\ \large Background}
+\author{Renato Neves \\ \scriptsize
+  \href{mailto:nevrenato@di.uminho.pt}{nevrenato@di.uminho.pt}}
+\maketitle
+
+\section{Quantum States}
+
+Models of computation traditionally put at center stage a notion of
+state and a corresponding notion of state
+transition~\cite{bruni17}. In the quantum world, states usually
+involve superpositions, angles, and lengths; or in other words, they
+involve aspects related to geometry. This suggests us to get familiar
+with both vector spaces and the more refined notion of an inner
+product space. We will also need to delve deep into the inner workings
+of maps between vector spaces and maps between inner product spaces,
+both intuitively giving rise to the notion of a quantum state
+transition.
+
+\subsection{Vector spaces}
+
+Let $\complex$ denote the set of complex numbers.
+
+\begin{definition}[Vector Space]
+  A vector space (over the complex numbers)~\footnote{In this course we will
+    only consider vector spaces over the complex numbers.} is a set
+  $V$ together with an `addition' operation $+ : V \times V \to V$, a
+  `multiplication' operation $\cdot : \complex \times V \to V$, a
+  `zero' element $0 \in V$, and an `inverse' operation $- : V \to V$
+  such that the following equations hold:
+  \begin{align*}
+    v + (u + w) & = (v + u) + w & v + u & = u + v  \\
+    v + 0 & = v & v + (-v) & = 0 \\
+    (s r) \cdot v & = s \cdot (r \cdot v) & 1 \cdot v & = v  \\
+    s \cdot (v + u) & = s \cdot v + s \cdot u & (s + r) \cdot v & = s \cdot v + r \cdot u
+  \end{align*}
+\end{definition}
+
+To keep notation simple we will often omit the dot of the scalar
+multiplication, i.e. we will write expressions $s \cdot v$ simply
+as $s v$.
+
+\begin{examples}
+  Note that the complex numbers themselves form a vector space, and
+  that the set $\complex^2$ of pairs of complex numbers also forms a
+  vector space. Recall that this last set underlies the mathematical
+  representation of a qubit -- i.e. the unit in quantum information
+  (later on we will see that our notion of quantum state is based on
+  sequences of qubits).
+\end{examples}
+
+
+\begin{exercise}
+  Show that for any finite set $n$ we can build a vector space
+  $[n,\complex]$ over the complex numbers. Show also that the set
+  $\mathsf{Mat}_\complex(n,m)$ of matrices with $n$ lines and $m$
+  columns and whose values are complex numbers also forms a vector
+  space (hint: observe that matrices can be given a functional
+  representation).
+\end{exercise}
+
+\begin{definition}[Linear maps a.k.a. linear operators or simply operators]
+  Consider two vector spaces $V$ and $W$. A linear map $f : V \to W$
+  is a function that satisfies the equations,
+  \begin{align*}
+    f(v_1 + v_2) = f (v_1) + f(v_2) \hspace{2cm}
+    f (s v) = s  f(v)
+  \end{align*}
+  We call $f$ a \emph{linear isomorphism} or simply isomorphism if it
+  is bijective.
+  %% check the correspondence in cats
+  When such is the case, we say that $V$ and $W$ are isomorphic to each
+  other (i.e. essentially the same), in symbols $V \simeq W$.
+\end{definition}
+
+\begin{exercise}
+  Show that the identity map $\id : V \to V$ is linear. Additionally show
+  that if $f : V \to W$ and $g : W \to U$ are linear maps then their
+  composition $g \cdot f : V \to U$ is also a linear map.
+\end{exercise}
+
+\begin{exercise}
+  Consider a vector space $V$. Show that linear maps
+  $f : \complex \to V$ are in one-to-one correspondence with the
+  elements of $V$.
+\end{exercise}
+
+
+Another important concept for the notion of quantum state and quantum
+state transition is that of tensoring. In essence, it allow us to
+mathematically represent multiple qubits (instead of working with just
+one) and thus to increase the computational power at
+hand\footnote{This is actually critical for taking full advantage of
+  quantum computing.}.
+
+\begin{definition}[Tensor]
+  Let $V$ and $W$ be two vector spaces. Their tensor, denoted by
+  $V \otimes W$, is the vector space consisting of all linear
+  combinations $\sum_{i \leq n} s_i  (v_i \otimes w_i)$ with
+  $v_i \in V$, $w_i \in W$, that satisfies the equations,
+  \begin{align*}
+   (v \otimes w) + (u \otimes w) & = (v + u) \otimes w &
+   (w \otimes v) + (w \otimes u) & = w \otimes (v + u) \\
+   s  (v \otimes w) & = (s v) \otimes w &
+   s  (v \otimes w) & = v \otimes (s w)
+  \end{align*} 
+\end{definition}
+
+\begin{exercise}
+  Show that from linear maps $f : V \to V'$ and $g : W \to W'$ we can
+  define a new linear map
+  $f \otimes g : V \otimes W \to V' \otimes W'$. Show that
+  $(f \otimes g) \cdot (f' \otimes g') = (f \cdot f' ) \otimes (g
+  \cdot g')$. Prove that there exist linear isomorphisms
+  $V \otimes W \simeq W \otimes V$ and $V \otimes \complex \simeq V$.
+\end{exercise}
+
+\begin{exercise}
+  Show that the map $\Delta : V \to V \otimes V$ defined by
+  $\Delta(v) = v \otimes v$ is \emph{non-linear}. How is this related
+  to the no-cloning theorem?
+\end{exercise}
+
+Another concept that we will use extensively is that of a basis.
+
+\begin{definition}[Basis]
+  A basis for a vector space $V$ is a set $B \subseteq V$ of vectors that
+  respects the following conditions:
+  \begin{itemize}
+  \item for every $v \in V$, we can find $v_1,\dots,v_n \in B$ and
+    $s_1,\dots,s_n \in \complex$ such that
+    $\sum_{i \leq n} s_i v_i = v$
+  \item for every sequence of vectors $v_1,\dots,v_n \in B$ and
+    sequence of complex numbers $s_1,\dots,s_n \in \complex$ if
+    $\sum_{i \leq n} s_i  v_i = 0$ then $s_i = 0$ for all
+    $i \leq n$.
+  \end{itemize}
+\end{definition}
+
+\begin{examples}
+  The set $\{ 1 \}$ is a basis for $\complex$  and the set
+  $\{(1,0),(0,1)\}$ is a basis for $\complex^2$.
+\end{examples}
+
+Let $B$ be a basis for a vector space $V$. If $B$ has $n$ elements we
+say that $V$ is $n$-dimensional. If $B$ is finite we say that $V$ is
+\emph{finite-dimensional}.
+
+In this course we are primarily interested in finite-dimensional
+vector spaces. Intuitively, this is justified by the fact we will only
+need to work with finite numbers of qubits at a time. From now on all
+vector spaces that we consider are finite-dimensional.
+
+
+\begin{exercise}
+  Let $n$ be a natural number and $\complex^n$ be the vector space of
+  $n$-tuples of complex numbers. Present a basis for $\complex^n$ and
+  subsequently indicate its dimension. Next let
+  $\mathsf{Mat}_\complex(n,m)$ be the vector space of matrices with
+  $n$ lines and $m$ columns and whose values are complex
+  numbers. Present a basis for this space and subsequently indicate
+  its dimension.
+\end{exercise}
+
+
+\begin{exercise}
+  Consider a linear map $f : V \to W$ and let $B$ be a basis for
+  $V$. Show that this map is \emph{uniquely determined} by the way it
+  maps the elements in the basis of $V$. Moreover, show that a
+  function $B \to W$ mapping elements in the basis of $V$ to $W$
+  induces a linear map of type $V \to W$.
+\end{exercise}
+
+
+\begin{exercise}
+  Show that any vector space $V$ with dimension $n$ is isomorphic to
+  the vector space $\complex^n$.
+\end{exercise}
+
+Matrices are often a convenient way of expressing states and computing
+state transitions. In our case we are fortunate enough that states
+$\complex \to V$ and linear maps $V \to W$ can be equivalently
+represented as matrices (whose dimensions depend on those of $V$ and
+$W$). We briefly describe how this works next.  Let $V$ and $W$ be
+vector spaces, $\{b_1,\dots,b_n\}$ a basis for $V$ and
+$\{c_1,\dots,c_m\}$ a basis for $W$. Consider then a linear map
+$f : V \to W$ and observe that for every $i \leq n$ we have
+$f(b_i) = \sum_{j \leq m} s_{ij} c_j$ for some
+$s_{i1}, \dots, s_{im} \in \complex$. We obtain a matrix
+$M \in \mathsf{Mat}_\complex(m,n)$ by setting $M_{ji} = s_{ij}$.
+Conversely, consider a matrix $M \in \mathsf{Mat}_\complex(m,n)$. We
+obtain a linear map $f : V \to W$ by setting
+$f(b_i) = \sum_{j \leq m} M_{ji} c_j$.
+
+\begin{exercise}
+  Show that the two operations described above (for switching between
+  linear maps and their matrix representation) are inverse of each
+  other.
+\end{exercise}
+
+\begin{exercise}
+  What is the matrix corresponding to the linear map
+  $f : \complex^2 \to \complex^2$ defined by $f(1,0) = (0,1)$ and
+  $f(0,1) = (1,0)$? What is the matrix corresponding to the linear map
+  $f : \complex^2 \to \complex^2$ defined by
+  $f(1,0) = \frac{1}{\sqrt{2}}(1,0) + \frac{1}{\sqrt{2}}(0,1)$ and
+  $f(0,1) = \frac{1}{\sqrt{2}}(1,0) - \frac{1}{\sqrt{2}}(1,0)$?
+\end{exercise}
+
+In the sequel, let $M : n \to m$ denote a matrix with $n$ lines, $m$
+columns, and whose values are complex numbers. Also for two matrices
+$M : n \to m$ and $N : m \to o$, let $M N : n  \to  o$
+denote the matrix multiplication of $M$ with $N$. Finally, given a
+linear map $f : V \to W$ such that $V$ and $W$ have dimension $n$ and
+$m$, respectively, let $M_f : m \to n$ denote the corresponding matrix.
+  
+\begin{exercise}
+  Show that elements of $v \in V$ are in one-to-one correspondence
+  with elements $M_v$ of $\mathsf{Mat}_\complex(n,1)$. Then show that
+  $M_f M_g = M_{g \cdot f}$.
+\end{exercise}
+
+
+\begin{exercise}
+  Let $B \subseteq V$, $C \subseteq W$ be bases for vector spaces $V$
+  and $W$, respectively.  Show that the set
+  $\{ b \otimes c \mid b \in B, c \in C \}$ is a basis for
+  $V \otimes W$. Then show that
+  $\complex^n \otimes \complex^m \simeq \complex^{n m}$.
+\end{exercise}
+
+Consider matrices $M : n \to m$ and $N : o \to p$. Their tensor
+$M \otimes N : n \cdot o \to m \cdot p$ (also called Kronecker
+product) is defined by,
+\begin{align*}
+  M \otimes N =
+  \begin{bmatrix}
+    M_{1,1} \cdot N, & \dots, &  M_{1,m} \cdot N \\
+    \vdots & \vdots & \vdots \\
+    M_{n,1} \cdot N, & \dots, &  M_{n,m} \cdot N
+  \end{bmatrix}
+\end{align*}
+Note that $M_{f \otimes g} = M_f \otimes M_g$.
+
+\begin{exercise}
+  For a given matrix $M : n \to m$, let us use $M^\ast : n \to m$ to
+  denote the matrix such that $M_{ij}^\ast = M_{ij}$, $M^T : m \to n$
+  to denote the transpose of $M$, and $M^\dagger : m \to n$ to denote
+  $(M^T)^\ast$, i.e. the conjugate transpose of $M$. Show that the
+  following equations hold.
+  \begin{align*}
+    (M \otimes N)^\ast = M^\ast \otimes N^\ast \hspace{1cm}
+    (M \otimes N)^T = M^T \otimes N^T \hspace{1cm}
+    (M \otimes N)^\dagger = M^\dagger \otimes N^\dagger
+  \end{align*}
+\end{exercise}
+
+
+\subsection{Inner product spaces}
+
+Recall that for some complex number $c$, the expression $c^\ast$
+denotes the complex conjugate of $c$.
+
+\begin{definition}[Inner product space] An inner product space is a
+  vector space $V$ equipped with a function
+  $\langle \cdot,\cdot \rangle : V \times V \to \complex$ (the inner
+  product) that satisfies the conditions,
+  \begin{align*}
+    \left \langle v, \sum_{i \leq n} s_i v_i \right \rangle
+    & = \sum_{i \leq n} s_i \cdot \langle v,v_i \rangle
+    & \langle v,w \rangle  & = \langle w,v \rangle^\ast \\
+    \langle v,v \rangle & \geq 0 & 
+    \langle v,v \rangle & = 0 \text{ entails } v = 0
+  \end{align*}
+\end{definition}
+
+\begin{exercise}
+  Let $n$ be a natural number.  Show that the vector space
+  $\complex^n$ becomes an inner product space when equipped with the
+  function $\langle \cdot, \cdot \rangle
+  : \complex^n \times \complex^n \to \complex$
+  defined by,
+  \begin{align*}
+   \langle (a_1,\dots,a_n),(b_1,\dots,b_n) \rangle = \sum_{i \leq n} a_i^\ast b_i 
+  \end{align*}
+\end{exercise}
+
+Every inner product space $V$ induces a norm
+$\| \cdot \| : V \to [0,\infty)$ defined by
+$\| v \| = \sqrt{\langle v,v \rangle}$. The mathematical
+representation of the state of $n$-qubits is a vector $v \in \complex^{2^n}$
+with norm $\| v \| = 1$.
+
+\begin{exercise}[Vector normalisation]
+  Let $v \in V$ be a vector. Show that,
+  \begin{align*}
+   \left \| \frac{v}{\| v \|} \right \| = 1 
+  \end{align*}
+
+\end{exercise}
+
+\begin{definition}[Orthonormal basis]
+  Two vectors $v,w \in V$ are said to be orthogonal to each other if
+  $ \langle v,w \rangle = 0$.  A basis $B$ for an inner product space
+  $V$ is called orthonormal if all elements of $B$ have norm $1$ and
+  are orthogonal to each other.
+\end{definition}
+
+\begin{exercise}
+  Show that the basis $\{ (1,0), (0,1) \}$ for $\complex^2$ is
+  orthonormal.
+\end{exercise}
+
+\begin{definition}[Tensor]
+  Let $V$ and $W$ be two inner spaces. Their tensor, denoted by
+  $V \otimes W$, is the tensor of $V$ and $W$ as vector spaces
+  equipped with the function,
+  \begin{align*}
+    \left \langle  \sum_{i \leq n} s_i (v_i \otimes w_i), \sum_{j \leq m} s_j (v_j \otimes w_j)
+    \right \rangle = \sum_{i \leq n, j \leq m} s_i^\ast s_j \cdot \langle v_i,v_j \rangle
+    \cdot \langle w_i,w_j \rangle
+  \end{align*}
+\end{definition}
+
+\begin{exercise}
+  Let $B \subseteq V$, $C \subseteq W$ be orthonormal bases for inner
+  product spaces $V$ and $W$, respectively.  Show that the set
+  $\{ b \otimes c \mid b \in B, c \in C \}$ is an orthonormal basis
+  for $V \otimes W$.
+\end{exercise}
+
+The notion of reversible computation in quantum computing is related
+to the following fact.  Consider a linear map $f : V \to W$ between
+inner product spaces $V$ and $W$. There exists a unique linear map
+$f^\dagger : W \to V$ such that for all $v \in V$ and $w \in W$ the
+equation,
+\begin{align*}
+  \langle f (v), w \rangle = \langle v, f^\dagger (w) \rangle
+\end{align*}
+holds. This map is often called the Hermitian conjugate (or adjoint)
+of $f$ -- its matrix representation is precisely the conjugate
+transpose of the matrix $M_f$. A particularly important family of
+operations that builds on this notion is that of unitary maps.
+
+\begin{definition}[Unitary maps]
+  Let $V$ be an inner product space. A linear map $f : V \to V$ is
+  called unitary if $f^{-1}$ exists and $f^{-1} = f^\dagger$.  An
+  equivalent (and insightful) characterisation of unitary maps tells
+  that they are precisely those that satisfy the equation,
+  \begin{align*}
+    \| v \| = \| f(v) \|
+  \end{align*}
+  which in the particular case of $V = \complex^{2^n}$ means that
+  quantum states are always mapped to quantum states (and not
+  something else).
+\end{definition}
+
+\begin{exercise}
+  Show that the following two maps are unitary:
+  \begin{itemize}
+  \item $f : \complex^2 \to \complex^2$ defined by $f(1,0) = (0,1)$ and
+    $f(0,1) = (1,0)$.
+  \item $g : \complex^2 \to \complex^2$ defined by
+  $g(1,0) = \frac{1}{\sqrt{2}}(1,0) + \frac{1}{\sqrt{2}}(0,1)$ and
+  $g(0,1) = \frac{1}{\sqrt{2}}(1,0) - \frac{1}{\sqrt{2}}(1,0)$.
+  \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+  Prove that if two linear maps are unitary then their tensor is also
+  unitary.
+\end{exercise}
+
+\begin{postulate}[Quantum state and state transition]
+  The state of an \emph{isolated} quantum computer is given by a unit
+  vector in the space $\complex^{2^n}$ for some finite number $n$ --
+  the number $n$ corresponds to the number of available qubits. State
+  transitions arise via unitary maps, more concretely the state of an
+  isolated quantum computer changes by an application of a unitary
+  map.~\footnote{See a more general version of this postulate in
+    Section 2.2 of~\cite{nielsen02}}
+\end{postulate}
+
+\section{Quantum Measurement}
+
+In order to render notation more convenient, we will now use $\ket{0}$
+and $\ket{1}$ to denote the elements $(1,0)$ and $(0,1)$ in
+$\complex^2$, respectively. We extend this notation to any space
+$\complex^{2^n}$ by observing that,
+\begin{align*}
+  \complex^{2^n} \simeq\ \underbrace{\complex^2 \otimes \dots \otimes \complex^2}_
+  {n \text{ times} }
+\end{align*}
+and representing
+$\ket{b_1} \otimes \dots \otimes \ket{b_n} \in \complex^{2^n}$ simply
+as $\ket{b_1, \dots, b_n}$.
+
+In this course, we will heavily use two maps $m_0$ and $m_1$ of type
+$\complex^2 \to \complex^2$ for measuring qubits. The map $m_0$ is
+defined by the equations,
+\begin{align*}
+  m_0 (\ket{0}) = \ket{0} \hspace{2cm} m_0 (\ket{1}) = 0
+\end{align*}
+and represents the outcome of the qubit measured being at state
+$\ket{0}$; the map $m_1$ arises from an analogous reasoning. For the
+space $\complex^{2^n}$ we represent the outcome of the $i$-th
+qubit being at state $\ket{k}$ by the map,
+\begin{align*}
+  \underbrace{\id \otimes \dots \otimes \id}_{i-1 \text{ times}} \otimes\ m_k \otimes
+  \underbrace{\id \otimes \dots \otimes \id}_{m - i  \text{ times}}
+  : \complex^{2^n} \to \complex^{2^n}
+\end{align*}
+We call maps built in this way and by composing them with one another
+`measurement maps'.
+
+\begin{postulate}[Quantum measurement]
+  Let $v \in \complex^{2^n}$ be a quantum state and let us consider a
+  measurement map $m : \complex^{2^n} \to \complex^{2^n}$. Then the
+  probability of  the outcome represented by $m$ is
+  $\langle m(v), m(v) \rangle$ and the quantum state after the
+  observed outcome is defined by,
+  \begin{align*}
+    \frac{m(v)}{\| m(v) \|}
+  \end{align*}
+\end{postulate}
+
+\begin{exercise}
+  Let $h : \complex^2 \to \complex^2$ be the unitary map defined by
+  the matrix,
+  \begin{align*} \frac{1}{\sqrt{2}} \cdot
+     \begin{bmatrix}
+       1 & 1 \\
+       1 & -1
+  \end{bmatrix}
+  \end{align*}
+  What is the probability of the outcome $\ket{0}$ when measuring
+  $h(\ket{0})$?
+\end{exercise}
+
+\begin{exercise}
+  Consider the quantum state,
+  \begin{align*}
+    \frac{1}{2} \ket{00} + \frac{1}{2} \ket{01} + \frac{1}{2} \ket{10} +
+    \frac{1}{2} \ket{11}
+  \end{align*}
+  What is the probability of the outcome $\ket{0}$ when measuring the
+  leftmost qubit? Let us assume that we indeed observed that the
+  leftmost qubit is at state $\ket{0}$. What is the probability of
+  the outcome $\ket{1}$ when measuring the rightmost qubit?
+\end{exercise}
+
+\begin{exercise}
+  Consider the quantum state,
+  \begin{align*}
+    \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{11}
+  \end{align*}
+  What is the probability of the outcome $\ket{0}$ when measuring the
+  leftmost qubit? What is the probability of the outcome $\ket{1}$
+  when measuring the rightmost qubit? Assume that we indeed observed
+  that the leftmost qubit is at state $\ket{0}$. Then what is the
+  probability of the outcome $\ket{1}$ when measuring the rightmost
+  qubit?
+\end{exercise}
+
+%% Bibliography
+\bibliographystyle{alpha}
+\bibliography{biblioTeaching}
+
+\end{document}

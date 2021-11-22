@@ -1,0 +1,68 @@
+\documentclass[a4paper, 11pt]{article}
+
+%% packages
+\usepackage{fullpage} % changes the margin
+\usepackage{hyperref} % Links
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{graphicx}
+%%
+
+%% environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{examples}{Example}
+\newtheorem{exercises}{Exercises}
+\newtheorem{exercise}{Exercise}
+\newtheorem{postulate}{Postulate}
+\usepackage[linewidth=1pt]{mdframed}
+%%
+
+%% config
+\date{}
+\linespread{1.15}
+%%
+
+\begin{document}
+
+\allowdisplaybreaks[2]
+\title{Quantum Computing @ MEF \\ \small{TPC-2}}
+\author{Renato Neves \\ \scriptsize
+  \href{mailto:nevrenato@di.uminho.pt}{nevrenato@di.uminho.pt}}
+\maketitle
+
+\noindent
+Consider the Boolean formula $\varphi = A \wedge (\neg B \vee C)$. Can
+we assign values to variables $A$, $B$ and $C$ such that $\varphi$ is
+true? Such a question is an instance of the \emph{Satisfiability
+  Problem}~\cite{schoning13}. The latter appears frequently across
+different domains, from theorem proving to software verification,
+cryptography, and artificial intelligence -- it is, in fact, one of
+the most discussed problems in Computer Science.
+
+The goal of this assignment is to write an essay (around 5 pages) that
+discusses how Grover's algorithm~\cite{nielsen16} can be used to
+tackle the Satisfiability problem. Among other things, we will value
+essays whose claims and ideas are tested and illustrated via
+implementations in \texttt{Qiskit}.
+
+\begin{mdframed}
+  What to submit: The report in \texttt{PDF} and if applicable your
+  \texttt{Qiskit} implementations. Please send by email
+  (\texttt{nevrenato@di.uminho.pt}) a unique zip file with the name
+  ``\texttt{qc2122-N.zip}'', where ``\texttt{N}'' is your student
+  number.  The subject of the email should be ``\texttt{qc2122 N
+    TPC-2}''.
+\end{mdframed}
+
+
+
+%% Bibliography
+\bibliographystyle{alpha}
+\bibliography{biblio}
+
+\end{document}

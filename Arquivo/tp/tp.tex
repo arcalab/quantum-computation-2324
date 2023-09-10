@@ -1,0 +1,99 @@
+\documentclass[a4paper, 11pt]{article}
+
+%% packages
+\usepackage{fullpage} % changes the margin
+\usepackage{hyperref} % Links
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{graphicx}
+%%
+
+%% environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{examples}{Example}
+\newtheorem{exercises}{Exercises}
+\newtheorem{exercise}{Exercise}
+\newtheorem{postulate}{Postulate}
+\usepackage[linewidth=1pt]{mdframed}
+%%
+
+%% config
+\date{}
+\linespread{1.15}
+%%
+
+\begin{document}
+
+\allowdisplaybreaks[2]
+\title{Quantum Computing @ MEF \\ \small{Assignment}}
+\author{Luís Barbosa and Renato Neves \\ \scriptsize
+  \href{mailto:nevrenato@di.uminho.pt}{nevrenato@di.uminho.pt}}
+\maketitle
+
+\noindent
+This assignment is divided in two parts: one is a concrete exercise on
+quantum algorithmics; the other, more exploratory, consists of writing
+an essay on a topic of Quantum Computing. We detail each of the two
+parts next.
+
+\section{Exercise on Quantum Counting}
+
+\noindent
+In a previous homework we studied Grover's algorithm as a way of
+tackling the \emph{Satisfiability problem}~\cite{schoning13}. In
+particular, we saw that the algorithm allows to \emph{compute the
+  solutions} of a Boolean formula, such as
+$\varphi = A \wedge (\neg B \vee C)$. Note, however, that if one is
+only concerned with satisfiability it is unnecessary to compute
+solutions and it may be better instead to \emph{only} determine
+whether there exists a solution.
+
+Therefore your next task is to use the \emph{Quantum Counting
+  algorithm}~\cite{nielsen16} to compute the number of solutions of
+$\varphi$ (rather than the solutions themselves) and present the
+corresponding circuit in~\texttt{Qiskit}.
+
+
+\section{Essay on a topic of Quantum Computing}
+
+Write an essay (around 8 pages) on one of the following topics:
+\begin{itemize}
+\item Error correction;
+\item Circuit optimization;
+\item Variational methods;
+\item Existing quantum programming languages and respective tools;
+\item Quantum chemistry;
+\item Quantum machine learning;
+\item Quantum computing for finance;
+\item Quantum Turing machines and other quantum automata;
+\item Adiabatic quantum computing;
+\item Measurement-based quantum computing;
+\item Quantum tomography.  
+\end{itemize}
+\emph{N.B.} This essay will be presented to the class later on.
+
+\label{sec:ess}
+\begin{mdframed}
+  What to submit: A report in \texttt{PDF} about Section 1 and 
+  respective implementation(s) in \texttt{Qiskit}. A report in
+  \texttt{PDF} about Section 2.
+
+  Please send by email (\texttt{nevrenato@di.uminho.pt}) a unique zip
+  file with the name ``\texttt{qc2122-N.zip}'', where ``\texttt{N}''
+  is your student number.  The subject of the email should be
+  ``\texttt{qc2122 N TPC-2}''.
+\end{mdframed}
+
+
+
+
+%% Bibliography
+\bibliographystyle{alpha}
+\bibliography{biblio}
+
+\end{document}

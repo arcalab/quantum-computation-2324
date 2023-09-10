@@ -1,0 +1,14 @@
+\begin{thebibliography}{NC16}
+
+\bibitem[NC16]{nielsen16}
+Michael~A. Nielsen and Isaac~L. Chuang.
+\newblock {\em Quantum Computation and Quantum Information (10th Anniversary
+  edition)}.
+\newblock Cambridge University Press, 2016.
+
+\bibitem[ST13]{schoning13}
+Uwe Sch{\"o}ning and Jacobo Tor{\'a}n.
+\newblock {\em The Satisfiability Problem: Algorithms and Analyses}, volume~3.
+\newblock Lehmanns Media, 2013.
+
+\end{thebibliography}
